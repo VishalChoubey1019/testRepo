@@ -1,0 +1,8 @@
+com/testRepo/service/UserService.class
+com/testRepo/Application.class
+com/testRepo/auth/Login.class
+com/testRepo/auth/data.class
+com/testRepo/auth/User.class
+com/testRepo/controller/UserController.class
+com/testRepo/repo/UserRepository.class
+com/testRepo/config/SecurityConfig.class
