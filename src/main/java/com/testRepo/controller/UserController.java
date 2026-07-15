@@ -31,7 +31,7 @@ public class UserController {
         // return userService.getAllUsers();
     }
 
-    @GetMapping("/{user}")
+    @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         return new User();
         // return userService.getUserById(id);
@@ -41,5 +41,10 @@ public class UserController {
     public User updateUser(@PathVariable Long id, @RequestBody User user) {
         return new User();
         // return userService.updateUser(id, user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        // userService.deleteUser(id);
     }
 }
