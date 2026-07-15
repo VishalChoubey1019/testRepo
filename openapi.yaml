@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+=======
+HTTP/1.1 200 
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/vnd.oai.openapi
+Content-Length: 1826
+Date: Wed, 15 Jul 2026 15:46:37 GMT
+
+>>>>>>> main
 openapi: 3.0.1
 info:
   title: OpenAPI definition
@@ -6,6 +23,7 @@ servers:
 - url: http://localhost:8080
   description: Generated server url
 paths:
+<<<<<<< HEAD
   /api/webhooks/github:
     post:
       tags:
@@ -132,6 +150,38 @@ paths:
         schema:
           type: string
           format: uuid
+=======
+  /api/users/{id}:
+    put:
+      tags:
+      - user-controller
+      operationId: updateUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/User"
+  /api/users:
+    get:
+      tags:
+      - user-controller
+      operationId: getAllUsers
+>>>>>>> main
       responses:
         "200":
           description: OK
@@ -140,6 +190,7 @@ paths:
               schema:
                 type: array
                 items:
+<<<<<<< HEAD
                   $ref: "#/components/schemas/ViolationDto"
 components:
   schemas:
@@ -220,3 +271,44 @@ components:
           - OPEN
           - CLOSED
           - MERGED
+=======
+                  $ref: "#/components/schemas/User"
+    post:
+      tags:
+      - user-controller
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/User"
+  /api/users/{user}:
+    get:
+      tags:
+      - user-controller
+      operationId: getUserById
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/User"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+>>>>>>> main
