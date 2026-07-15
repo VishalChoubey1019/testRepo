@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 HTTP/1.1 200 
 Vary: Origin
 Vary: Access-Control-Request-Method
@@ -12,6 +14,7 @@ Content-Type: application/vnd.oai.openapi
 Content-Length: 1826
 Date: Wed, 15 Jul 2026 15:46:37 GMT
 
+>>>>>>> main
 openapi: 3.0.1
 info:
   title: OpenAPI definition
@@ -20,6 +23,134 @@ servers:
 - url: http://localhost:8080
   description: Generated server url
 paths:
+<<<<<<< HEAD
+  /api/webhooks/github:
+    post:
+      tags:
+      - github-webhook-controller
+      operationId: receive
+      parameters:
+      - name: X-GitHub-Event
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: X-Hub-Signature-256
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+  /api/auth/register:
+    post:
+      tags:
+      - auth-controller
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+  /api/auth/login:
+    post:
+      tags:
+      - auth-controller
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+  /api/dashboard/violations:
+    get:
+      tags:
+      - dashboard-controller
+      operationId: getViolations
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ViolationDto"
+  /api/dashboard/violations/severity/{severity}:
+    get:
+      tags:
+      - dashboard-controller
+      operationId: getViolationsBySeverity
+      parameters:
+      - name: severity
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ViolationDto"
+  /api/dashboard/pull-requests:
+    get:
+      tags:
+      - dashboard-controller
+      operationId: getPullRequests
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PullRequestDto"
+  /api/dashboard/pull-requests/{pullRequestId}/violations:
+    get:
+      tags:
+      - dashboard-controller
+      operationId: getViolationsForPullRequest
+      parameters:
+      - name: pullRequestId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+=======
   /api/users/{id}:
     put:
       tags:
@@ -50,6 +181,7 @@ paths:
       tags:
       - user-controller
       operationId: getAllUsers
+>>>>>>> main
       responses:
         "200":
           description: OK
@@ -58,6 +190,88 @@ paths:
               schema:
                 type: array
                 items:
+<<<<<<< HEAD
+                  $ref: "#/components/schemas/ViolationDto"
+components:
+  schemas:
+    RegisterRequest:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          maxLength: 2147483647
+          minLength: 8
+          type: string
+    AuthResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        email:
+          type: string
+    LoginRequest:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    ViolationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pullRequestId:
+          type: string
+          format: uuid
+        category:
+          type: string
+          enum:
+          - API_CONTRACT
+          - SQL_MIGRATION
+          - DOCKERFILE
+          - PR_METADATA
+        severity:
+          type: string
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+        ruleId:
+          type: string
+        message:
+          type: string
+        filePath:
+          type: string
+    PullRequestDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        repoFullName:
+          type: string
+        prNumber:
+          type: integer
+          format: int32
+        title:
+          type: string
+        status:
+          type: string
+          enum:
+          - OPEN
+          - CLOSED
+          - MERGED
+=======
                   $ref: "#/components/schemas/User"
     post:
       tags:
@@ -97,3 +311,4 @@ components:
         id:
           type: integer
           format: int64
+>>>>>>> main
