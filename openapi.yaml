@@ -1,3 +1,17 @@
+HTTP/1.1 200 
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/vnd.oai.openapi
+Content-Length: 1826
+Date: Wed, 15 Jul 2026 15:46:37 GMT
+
 openapi: 3.0.1
 info:
   title: OpenAPI definition
@@ -31,20 +45,6 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/User"
-    delete:
-      tags:
-      - user-controller
-      operationId: deleteUser
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
   /api/users:
     get:
       tags:
