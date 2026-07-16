@@ -40,7 +40,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/User"
+              $ref: "#/components/schemas/AdminUser"
         required: true
       responses:
         "200":
@@ -48,18 +48,17 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: "#/components/schemas/AdminUser"
     delete:
       tags:
       - user-controller
       operationId: deleteUser
-      parameters:
-      - name: id
-        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
         required: true
-        schema:
-          type: integer
-          format: int64
       responses:
         "200":
           description: OK
@@ -96,6 +95,14 @@ paths:
                 $ref: "#/components/schemas/User"
 components:
   schemas:
+    AdminUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        adminId:
+          type: string
     User:
       type: object
       properties:

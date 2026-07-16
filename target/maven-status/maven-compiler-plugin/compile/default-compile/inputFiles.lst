@@ -1,4 +1,5 @@
 /Users/vishal/Desktop/projects/testRepo/src/main/java/com/testRepo/Application.java
+/Users/vishal/Desktop/projects/testRepo/src/main/java/com/testRepo/auth/AdminUser.java
 /Users/vishal/Desktop/projects/testRepo/src/main/java/com/testRepo/auth/User.java
 /Users/vishal/Desktop/projects/testRepo/src/main/java/com/testRepo/config/SecurityConfig.java
 /Users/vishal/Desktop/projects/testRepo/src/main/java/com/testRepo/controller/UserController.java
