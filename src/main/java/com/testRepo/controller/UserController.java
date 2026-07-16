@@ -42,4 +42,9 @@ public class UserController {
         return new User();
         // return userService.updateUser(id, user);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@RequestBody User user) {
+        return;
+    }
 }
