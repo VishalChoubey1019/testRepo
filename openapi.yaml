@@ -49,20 +49,6 @@ paths:
             '*/*':
               schema:
                 $ref: "#/components/schemas/User"
-    delete:
-      tags:
-      - user-controller
-      operationId: deleteUser
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: OK
   /api/users:
     get:
       tags:
