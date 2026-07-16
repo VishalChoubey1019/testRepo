@@ -47,4 +47,10 @@ public class UserController {
     public void deleteUser(@RequestBody User user) {
         return;
     }
+
+    @PutMapping("/{user}")
+    public User randomPut(@RequestBody User user) {
+        return new User();
+        // return userService.updateUser(id, user);
+    }
 }
